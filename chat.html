@@ -1,15 +1,26 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <button id="start" onclick="startGuessing()">Start Guessing</button>
-    <button id="higher" onclick="higher()" style="display:none">Too High</button>
-    <button id="lower" onclick="lower()" style="display:none">Too Low</button>
-    <button id="correct" onclick="correct()" style="display:none">Correct</button>
+    <center>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+    <button id="start" onclick="startGuessing()">Sākt spēli!</button>
+    <button id="lower" onclick="higher()" style="display:none">Par zemu</button>
+    <button id="higher" onclick="lower()" style="display:none">Par augstu</button>
+    <button id="correct" onclick="correct()" style="display:none">Pareizi!</button>
     <p id="result" style="display:none"></p>
 
     <script>
       let min = 1;
-      let max = 10;
+      let max = 100;
       let guess;
       function startGuessing() {
         document.getElementById("start").style.display = "none";
@@ -24,21 +35,22 @@
       function higher() {
         min = guess + 1;
         guess = Math.floor((max + min) / 2);
-        document.getElementById("result").innerHTML = "Is your number " + guess + "?";
+        document.getElementById("result").innerHTML = "Vai tavs skaitlis ir " + guess + "?";
       }
 
       function lower() {
         max = guess - 1;
         guess = Math.floor((max + min) / 2);
-        document.getElementById("result").innerHTML = "Is your number " + guess + "?";
+        document.getElementById("result").innerHTML = "Vai tavs skaitlis ir " + guess + "?";
       }
 
       function correct() {
-        document.getElementById("result").innerHTML = "I got it! your number was " + guess;
+        document.getElementById("result").innerHTML = "IR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Tavs skaitlis ir " + guess;
         document.getElementById("higher").style.display = "none";
         document.getElementById("lower").style.display = "none";
         document.getElementById("correct").style.display = "none";
       }
     </script>
+    </center>
   </body>
 </html>

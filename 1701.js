@@ -6,9 +6,9 @@ function jaunsMinejums (){
     let randomNo1lidz0 = Math.random();
     let starpiba = lielakaisSkaitlis - mazakaisSkaitlis
     let randomPareizaIntervala = randomNo1lidz0*starpiba
-    minejums =  Math.round(Math.random()*(lielakaisSkaitlis-mazakaisSkaitlis)+mazakaisSkaitlis)
+    minejums =  Math.round(Math.random()*(lielakaisSkaitlis-mazakaisSkaitlis)+mazakaisSkaitlis);
 }
 
-function uzrakstitMinejumu(){
-    document.getElementById("minejums")
+function uzrakstitMinejumu(teksts){
+    document.getElementById("minejums").innerHTML=teksts;
 }

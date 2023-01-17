@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* Define the style for the game board */
+      #board {
+        width: 600px;
+        height: 600px;
+        border: 1px solid black;
+        margin: 0 auto;
+        position: relative;
+      }
+      /* Define the style for the snake blocks */
+      .snake-block {
+        width: 10px;
+        height: 10px;
+        background-color: black;
+        position: absolute;
+      }
+      /* Define the style for the food block */
+      #food {
+        width: 10px;
+        height: 10px;
+        background-color: red;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="board"></div>
+    <script>
+      // Initialize the game variables
+      const board = document.getElementById("board");
+      const snakeBlocks = [];
+      const food = document.createElement("div");
+      food.id = "food";
+      board.appendChild(food);
+      let direction = "right";
+      let snakeSpeed = 100;
+      let score = 0;
+
+      // Create the initial snake
+      for (let i = 0; i < 3; i++) {
+        const snakeBlock = document.createElement("div");
+        snakeBlock.classList.add("snake-block");
+        snakeBlock.style.left = `${i * 10}px`;
+        snakeBlock.style.top = `0px`;
+        snakeBlocks.push(snakeBlock);
+        board.appendChild(snakeBlock);
+      }
+
+      // Generate initial food
+      generateFood();
+
+      // Move the snake every 100ms
+      setInterval(moveSnake, snakeSpeed);
+
+      // Move the snake in the current direction
+      function moveSnake() {
+        // Get the current position of the snake's head
+        const currentHead = snakeBlocks[0];
+        let x = parseInt(currentHead.style.left);
+        let y = parseInt(currentHead.style.top);
+
+        // Update the position of the snake's head based on the direction
+        if (direction === "right") {
+          x += 10;
+        } else if (direction === "left") {
+          x -= 10;
+        } else if (direction === "up") {
+          y -= 10;
+        } else if (direction === "down") {
+          y += 10;
+        }
+
+        // Check if the snake hit the food
+        if (
+          x === parseInt(food.style.left) &&
+          y === parseInt(food.style.top)
+        ) {
+          // Increase the score
+          score++;
+
+          // Create a new block for the snake's tail
+          const newTail = document.createElement("div");
+          newTail.classList.add("snake-block");
+          snakeBlocks.push(newTail);
+          board.appendChild(newTail);
+
+          // Generate new food
+          generateFood();
+        }
+
+        // Check if the snake hit the walls
+        if (x < 0 || x > 590 || y
